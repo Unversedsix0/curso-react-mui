@@ -1,12 +1,17 @@
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./routes";
+import {ThemeProvider } from '@mui/material'
+import { LightTheme } from "./shared/themes/Light";
 
 export const App = () => {
   return (
-    <BrowserRouter>
-     <AppRoutes/>
+    <ThemeProvider theme={LightTheme}>
+      <BrowserRouter>
+        <AppRoutes />
 
-    </BrowserRouter>
+      </BrowserRouter>
+
+    </ThemeProvider>
 
   );
 }
