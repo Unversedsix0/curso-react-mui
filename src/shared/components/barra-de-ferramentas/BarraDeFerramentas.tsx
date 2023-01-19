@@ -1,7 +1,24 @@
 import { Box, TextField, Button, Paper, useTheme, InputAdornment, Icon } from '@mui/material'
 import React from 'react'
 
-export const BarraDeFerramentas = () => {
+interface IBarraDeFerramentasProps {
+    textoDaBusca?: string;
+    mostrarInputBusca?: boolean;
+    aoMudarTextoDaBusca?: (novoTexto: string) => void;
+    textoBotaoNovo?: string;
+    mostrarBotaoNovo?: boolean;
+    aoClicarBotaoNovo?: () => void;
+
+}
+
+export const BarraDeFerramentas: React.FC<IBarraDeFerramentasProps> = ({
+    textoDaBusca = '',
+    textoBotaoNovo = 'Novo',
+    mostrarInputBusca = false,
+    mostrarBotaoNovo = true,
+    aoMudarTextoDaBusca,
+    aoClicarBotaoNovo
+}) => {
     const theme = useTheme();
     return (
         <Box
@@ -16,7 +33,7 @@ export const BarraDeFerramentas = () => {
 
 
         >
-            <TextField
+            {mostrarInputBusca && (<TextField
                 size='small'
                 placeholder='Pesquisar...'
                 color='primary'
@@ -27,15 +44,21 @@ export const BarraDeFerramentas = () => {
                         </InputAdornment>
                     )
                 }}
+                value={textoDaBusca}
+                onChange={(e) => aoMudarTextoDaBusca?.(e.target.value)}
+            />)}
 
-            />
             <Box flex={1} display='flex' justifyContent='end'>
-                <Button
+                {mostrarBotaoNovo && (<Button
                     variant="contained"
                     color="primary"
                     disableElevation
                     endIcon={<Icon>add</Icon>}
-                > Novo </Button>
+                    onClick={aoClicarBotaoNovo}
+                >
+                    {textoBotaoNovo}
+                </Button>
+                )}
             </Box>
 
         </Box>
