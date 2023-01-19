@@ -11,7 +11,7 @@ interface IBarraDeFerramentasProps {
 
 }
 
-export const BarraDeFerramentas: React.FC<IBarraDeFerramentasProps> = ({
+export const FerramentasDaListagem: React.FC<IBarraDeFerramentasProps> = ({
     textoDaBusca = '',
     textoBotaoNovo = 'Novo',
     mostrarInputBusca = false,
