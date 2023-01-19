@@ -19,6 +19,7 @@ export const FerramentasDaListagem: React.FC<IBarraDeFerramentasProps> = ({
     aoMudarTextoDaBusca,
     aoClicarBotaoNovo
 }) => {
+    
     const theme = useTheme();
     return (
         <Box
